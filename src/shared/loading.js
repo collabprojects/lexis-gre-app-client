@@ -1,8 +1,9 @@
 import React from 'react';
 
 const Loading = () => {
-    return (
-        <div class="preloader-wrapper big active">
+  return (
+    <div class="Loading">
+      <div class="preloader-wrapper big active">
         <div class="spinner-layer spinner-blue-only">
           <div class="circle-clipper left">
             <div class="circle"></div>
@@ -13,7 +14,8 @@ const Loading = () => {
           </div>
         </div>
       </div>
-    )
+    </div>
+  )
 }
 
 export default Loading;

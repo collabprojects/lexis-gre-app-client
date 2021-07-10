@@ -1,5 +1,5 @@
 import React from 'react';
-import Loading from '../shared/loading'
+import Loading from '../shared/loading';
 
 
 class Words extends React.Component{

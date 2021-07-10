@@ -1,2 +1,48 @@
 table {
 }
+
+a {
+    cursor: pointer;
+}
+
+.word-form {
+  left: 0;
+  right: 0;
+  top: 11%;
+  bottom: 0;
+  margin: auto;
+  max-width: 50%;
+  overflow: auto;
+  position: absolute;
+}
+
+.Loading{
+    left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  max-width: 50%;
+  overflow: auto;
+  position: absolute;
+}
+
+.flash-card{
+  left: 0;
+  right: 0;
+  top: 11%;
+  bottom: 0;
+  margin: auto;
+  max-width: 100%;
+  overflow: auto;
+  position: absolute; 
+}
+
+@media only screen and (max-width: 768px) {
+    .word-form{
+        max-width: 80%;
+    }
+    .flash_card{
+        max-width: 100%;
+    }
+  }
