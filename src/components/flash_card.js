@@ -68,7 +68,7 @@ class FlashCard extends React.Component {
 
     render() {
         const state = this.state;
-        const card = state.word !== '' ? <div style={{ paddingTop: "10px" }}>
+        const card = state.word !== '' ? <div><div style={{ paddingTop: "10px" }}>
             <div class="card grey lighten-2" style={{color: "#C2C5CC"}}>
                 <div class="card-content white-text">
                     <span class="card-title" style={{color: 'black', fontWeight: 'bold'}}>{state.word}</span>
@@ -82,8 +82,9 @@ class FlashCard extends React.Component {
                     <a onClick={this.reveal}>REVEAL</a>
                 </div>
             </div>
-            <div className="center-align">
-                <button onClick={this.next} className="waves-effect waves-light btn black">Next</button></div></div> : <Loading />
+            </div>
+            <div className="center-align" style={{paddingTop: "10px"}}>
+                <button onClick={this.next} className="waves-effect waves-light btn black">Next</button></div></div> : <div className="center"><Loading /></div>
         return (
             <div className="flash-card" style={{ width: "80%" }}>
                 {card}
