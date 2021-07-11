@@ -68,23 +68,25 @@ class FlashCard extends React.Component {
 
     render() {
         const state = this.state;
-        const card = state.word !== '' ? <div><div style={{ paddingTop: "10px" }}>
-            <div class="card grey lighten-2" style={{color: "#C2C5CC"}}>
-                <div class="card-content white-text">
-                    <span class="card-title" style={{color: 'black', fontWeight: 'bold'}}>{state.word}</span>
-                    <p style={{ fontWeight: 'bold', color: '#FF69B4' }}>Primary Meaning: </p>
-                    <p style={{ color: 'green' }}>{state.placeholder}</p>
-                    <br />
-                    <p style={{ fontWeight: 'bold', color: '#FF69B4' }}>Sentence: </p>
-                    <p style={{color: 'green'}}>{state.placeholder_sentence}</p>
-                </div>
-                <div class="card-action">
-                    <a onClick={this.reveal}>REVEAL</a>
+        const card = state.word !== '' ? <div><div style={{ paddingTop: "10px"}}>
+            <div id="flash-card-border" style={{borderColor:"orangered", borderWidth:"30px"}}>
+                <div class="card yellow lighten-2">
+                    <div class="card-content white-text">
+                        <span class="card-title" style={{ color: 'black', fontWeight: 'bold', textDecoration:"underline"}}>{state.word}</span>
+                        <p style={{ fontWeight: 'bold', color: '#f50057' }}>Primary Meaning: </p>
+                        <p style={{ color: '#0d47a1' }}>{state.placeholder}</p>
+                        <br />
+                        <p style={{ fontWeight: 'bold', color: '#f50057' }}>Sentence: </p>
+                        <p style={{ color: '#0d47a1' }}>{state.placeholder_sentence}</p>
+                    </div>
+                    <div class="card-action">
+                        <a onClick={this.reveal} style={{color:"#00bfa5", fontWeight: 'bold'}}>REVEAL</a>
+                    </div>
                 </div>
             </div>
-            </div>
-            <div className="center-align" style={{paddingTop: "10px"}}>
-                <button onClick={this.next} className="waves-effect waves-light btn black">Next</button></div></div> : <div className="center"><Loading /></div>
+        </div>
+            <div className="center-align" style={{ paddingTop: "10px" }}>
+                <button onClick={this.next} className="waves-effect waves-light btn pink accent-3">Next</button></div></div> : <div className="center"><Loading /></div>
         return (
             <div className="flash-card" style={{ width: "80%" }}>
                 {card}

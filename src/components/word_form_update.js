@@ -1,6 +1,6 @@
 import React from 'react';
 
-class WordForm extends React.Component{
+class WordFormUpdate extends React.Component{
     state = {
         word: '',
         primary_meaning: '',
@@ -10,12 +10,29 @@ class WordForm extends React.Component{
         antonym: '',
         error: '',
     }
+    componentDidMount() {
+        fetch('http://127.0.0.1:5000/word/'+this.props.match.params.id).then((res) => {
+            if (res.ok) {
+                return res.json()
+            }
+        }).then((data) => {
+            this.setState({
+                word: data.word,
+                primary_meaning: data.primary_meaning,
+                secondary_meaning: data.secondary_meaning,
+                sentence: data.sentence,
+                synonym: data.synonym,
+                antonym: data.antonym
+            })
+        })
+    }
 
     handleChange = (e) => {
         this.setState({
             [e.target.id] : e.target.value
         })
     }
+
 
     handleSubmit = () => {
         //const state = this.state
@@ -27,14 +44,14 @@ class WordForm extends React.Component{
             synonym: this.state.synonym,
             antonym: this.state.antonym
         }
-        fetch('http://127.0.0.1:5000/words/', {
-            method: 'POST',
+        fetch('http://127.0.0.1:5000/word/'+this.props.match.params.id, {
+            method: 'PATCH',
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify(wordObj)
         }).then((res)=>{
             if (res.status === 409){
                 this.setState({
-                    error: 'Word already available'
+                    error: 'Unable to fetch word'
                 })
                 setTimeout(()=>{
                     this.setState({
@@ -43,7 +60,7 @@ class WordForm extends React.Component{
                 }, 3000)
             }
             else{
-                window.M.toast({html: 'Word successfully added!'}, 2000);
+                window.M.toast({html: 'Word successfully updated!'}, 2000);
             }
         })
     }
@@ -52,7 +69,7 @@ class WordForm extends React.Component{
         return (
             <div className="word-form">
             <div className="center">
-            <h5>Add New Word</h5>
+            <h5>Update Word</h5>
             <form className="center">
             <input type='text' id='word' value={this.state.word} placeholder='Enter word' onChange={this.handleChange}/>
             <input type='text' id='primary_meaning' value={this.state.primary_meaning} placeholder='Enter Primary Meaning' onChange={this.handleChange}/>
@@ -61,7 +78,7 @@ class WordForm extends React.Component{
             <input type='text' id='synonym' value={this.state.synonym} placeholder='Enter Synonyms' onChange={this.handleChange}/>
             <input type='text' id='antonym' value={this.state.antonym} placeholder='Enter Antonyms' onChange={this.handleChange}/>
             </form>
-            <button onClick={this.handleSubmit} disabled = {this.state.word !== '' ? false : true} className = "waves-effect waves-light btn pink accent-3">Add Word</button>
+            <button onClick={this.handleSubmit} disabled = {this.state.word !== '' ? false : true} className = "waves-effect waves-light btn pink accent-3">Update Word</button>
             <p style={{color: 'red'}}>{this.state.error}</p>
             </div>
             </div>
@@ -70,4 +87,4 @@ class WordForm extends React.Component{
 
 }
 
-export default WordForm;
+export default WordFormUpdate;

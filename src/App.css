@@ -1,3 +1,13 @@
+body {
+  /*background-color:#152238;*/
+  background-color:#e0e0e0
+}
+
+i{
+  color:#f50057
+}
+
+
 table {
 }
 
@@ -46,3 +56,8 @@ a {
         max-width: 100%;
     }
   }
+
+#flash-card-border{
+  border-color: orangered;
+  border-width: 30px;
+}

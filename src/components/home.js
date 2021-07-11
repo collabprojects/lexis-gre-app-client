@@ -12,6 +12,8 @@ const Home = () => {
             <br></br>
             <Link to="/create_word_form">Add a New Word</Link>
             <Routes/>
+            <Link to="/update_word_form">Update Existing Word</Link>
+            <Routes/>
         </div>
     )
 }
