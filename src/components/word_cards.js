@@ -23,11 +23,11 @@ class WordCard extends React.Component {
         const state = this.state
         const words = state.words ? <div className="word_cards">
             <ul class="collection with-header">
-                <li class="collection-header"><h4>Word List</h4></li>
+                <li class="collection-header center grey lighten-2" style={{marginTop:"10px"}}><h5><b><u>Word List</u></b></h5></li>
 
                 {state.words.map((word) => {
                     return (
-                        <li key={word.id} class="collection-item"><div>{word.word}<BrowserRouter><Link to={"/update_word_form/" + word.id} class="secondary-content"><i class="material-icons">edit</i></Link></BrowserRouter></div></li>
+                        <li key={word.id} class="collection-item yellow lighten-3" ><div style={{color:"#0d47a1"}}>{word.word}<BrowserRouter><Link to={"/update_word_form/" + word.id} class="secondary-content"><i class="material-icons">edit</i></Link></BrowserRouter></div></li>
                     )
 
                 })}

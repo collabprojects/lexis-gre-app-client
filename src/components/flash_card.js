@@ -69,8 +69,8 @@ class FlashCard extends React.Component {
     render() {
         const state = this.state;
         const card = state.word !== '' ? <div><div style={{ paddingTop: "10px"}}>
-            <div id="flash-card-border" style={{borderColor:"orangered", borderWidth:"30px"}}>
-                <div class="card yellow lighten-2">
+            <div>
+                <div class="card yellow lighten-3 z-depth-2">
                     <div class="card-content white-text">
                         <span class="card-title" style={{ color: 'black', fontWeight: 'bold', textDecoration:"underline"}}>{state.word}</span>
                         <p style={{ fontWeight: 'bold', color: '#f50057' }}>Primary Meaning: </p>
