@@ -54,5 +54,12 @@ a {
     .flash_card{
         max-width: 100%;
     }
+    .search-input{
+      max-width: 80%
+    }
+    .search-input i{
+      display: hidden;
+    }
+    
   }
  
