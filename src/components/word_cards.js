@@ -1,7 +1,8 @@
 import React from 'react';
-import { BrowserRouter, Link } from 'react-router-dom';
+import { Route,BrowserRouter, Link } from 'react-router-dom';
 import Loading from '../shared/loading';
 import {withRouter} from 'react-router-dom';
+import WordFormUpdate from './word_form_update';
 
 class WordCard extends React.Component {
     state = {
@@ -59,6 +60,7 @@ class WordCard extends React.Component {
     render() {
         const state = this.state
         const words = state.words ? <div className="word_cards">
+            <BrowserRouter><Route path="/update_word_form/:id"  component={WordFormUpdate}/></BrowserRouter>
             <ul class="collection with-header">
                 <li class="collection-header center grey lighten-2" style={{ marginTop: "0px" }}><h5><b><u>Word List</u></b></h5></li>
                 <div className="row">

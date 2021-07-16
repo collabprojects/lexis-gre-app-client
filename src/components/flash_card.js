@@ -2,8 +2,15 @@ import React from 'react';
 import Loading from '../shared/loading';
 
 
+
 class FlashCard extends React.Component {
 
+   
+
+    constructor(props) {
+        super(props);
+
+    }
     state = {
         word: '',
         primary_meaning: '',
@@ -13,11 +20,6 @@ class FlashCard extends React.Component {
         rand_words: [],
         user_number: this.props.user_number,
         length: null
-    }
-
-    constructor(props) {
-        super(props);
-
     }
 
     componentDidMount() {

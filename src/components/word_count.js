@@ -1,5 +1,6 @@
 import React from 'react';
-import { BrowserRouter,  withRouter } from 'react-router-dom';
+import {Link, BrowserRouter,  withRouter } from 'react-router-dom';
+
 
 
 
@@ -25,9 +26,11 @@ class WordCount extends React.Component {
                 <form className="user_input">
                     <input type='text' id='user_number' onChange={this.handleChange} style={{textAlign:"center",width:"50%",fontSize:"20px",fontWeight:"bold",color:"#f50057"}}/>
                 </form>
-                <BrowserRouter><button onClick={this.handleSubmit} disabled={isNaN(this.state.user_number) || this.state.user_number===""} className="waves-effect waves-light btn pink accent-3" style={{ marginTop: "5%" }}>Generate</button></BrowserRouter>
+                <BrowserRouter><Link to='./flash_card'><button disabled={isNaN(this.state.user_number) || this.state.user_number===""} className="waves-effect waves-light btn pink accent-3" style={{ marginTop: "5%" }}>Generate</button> </Link></BrowserRouter>
                 </div>
             </div>
+
+           
            
         )}
 }
