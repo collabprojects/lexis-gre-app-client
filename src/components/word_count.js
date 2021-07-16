@@ -1,5 +1,8 @@
 import React from 'react';
-import { BrowserRouter, withRouter } from 'react-router-dom';
+import { BrowserRouter,  withRouter } from 'react-router-dom';
+
+
+
 
 class WordCount extends React.Component {
 
@@ -12,9 +15,7 @@ class WordCount extends React.Component {
             [e.target.id]: e.target.value
         })
     }
-    handleSubmit = () => {
-
-    }
+    
     render() {
         return (
             
