@@ -15,6 +15,11 @@ class FlashCard extends React.Component {
         length: null
     }
 
+    constructor(props) {
+        super(props);
+
+    }
+
     componentDidMount() {
         fetch('https://lexis-gre-app-server.herokuapp.com/words/').then((res) => {
             if (res.ok) {
