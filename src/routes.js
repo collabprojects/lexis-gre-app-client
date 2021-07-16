@@ -1,19 +1,19 @@
-import {BrowserRouter, Route, Switch} from 'react-router-dom';
-import FlashCard from './components/flash_card';
+import {Route, Switch} from 'react-router-dom';
+import WordCount from './components/word_count';
 import WordForm from './components/word_form';
-import Home from './components/home';
-import Words from './components/words';
 import WordFormUpdate from './components/word_form_update';
 import WordCard from './components/word_cards';
+import FlashCard from './components/flash_card';
 
 const Routes = () => {
     return (
         <div>
         <Route exact path="/" component={WordCard}/>
         <Switch>
-        <Route path="/flash_cards" component={FlashCard}/>
+        <Route path="/word_count" component={WordCount}/>
         <Route path="/create_word_form" component={WordForm}/>
         <Route path="/update_word_form/:id"  component={WordFormUpdate}/>
+        <Route path="/flash_card"  component={FlashCard}/>
         </Switch>
         </div>
     )

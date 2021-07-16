@@ -29,7 +29,7 @@ class WordForm extends React.Component {
             synonym: this.state.synonym,
             antonym: this.state.antonym
         }
-        fetch('http://127.0.0.1:5000/words/', {
+        fetch('https://lexis-gre-app-server.herokuapp.com/words/', {
             method: 'POST',
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(wordObj)

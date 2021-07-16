@@ -1,65 +1,86 @@
 body {
-  background-color:#e0e0e0
+    background-color: #e0e0e0
 }
 
-i{
-  color:#f50057
+i {
+    color: #f50057
 }
 
-
-table {
-}
+table {}
 
 a {
     cursor: pointer;
 }
 
 .word-form {
-  left: 0;
-  right: 0;
-  top: 11%;
-  bottom: 0;
-  margin: auto;
-  max-width: 50%;
-  overflow: auto;
-  position: absolute;
-}
-
-.Loading{
     left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  margin: auto;
-  max-width: 50%;
-  overflow: auto;
-  position: absolute;
+    right: 0;
+    top: 11%;
+    bottom: 0;
+    margin: auto;
+    max-width: 50%;
+    overflow: auto;
+    position: absolute;
 }
 
-.flash-card{
-  left: 0;
-  right: 0;
-  top: 11%;
-  bottom: 0;
-  margin: auto;
-  max-width: 100%;
-  overflow: auto;
-  position: absolute; 
+.Loading {
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    max-width: 50%;
+    overflow: auto;
+    position: absolute;
+}
+
+.flash-card {
+    left: 0;
+    right: 0;
+    top: 11%;
+    bottom: 0;
+    margin: auto;
+    max-width: 100%;
+    overflow: auto;
+    position: absolute;
+}
+
+.word-count {
+    left: 0;
+    right: 0;
+    top: 11%;
+    bottom: 0;
+    margin: auto;
+    max-width: 100%;
+    overflow: auto;
+    position: absolute;
 }
 
 @media only screen and (max-width: 768px) {
-    .word-form{
+    .word-form {
         max-width: 80%;
     }
-    .flash_card{
+    .flash_card {
         max-width: 100%;
     }
-    .search-input{
-      max-width: 80%
+    .search-input {
+        max-width: 80%
     }
-    .search-input i{
-      display: hidden;
+    .search-input i {
+        display: hidden;
     }
-    
-  }
- 
+    .user_input {
+        margin-top: 30%;
+        width: 30%;
+        margin: auto;
+    }
+    .Loading {
+        margin-top: 50%;
+    }
+}
+
+.user_input {
+    width: 50%;
+    margin: auto;
+    padding-top: 5%;
+}

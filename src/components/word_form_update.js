@@ -11,7 +11,7 @@ class WordFormUpdate extends React.Component{
         error: '',
     }
     componentDidMount() {
-        fetch('http://127.0.0.1:5000/word/'+this.props.match.params.id).then((res) => {
+        fetch('https://lexis-gre-app-server.herokuapp.com/word/'+this.props.match.params.id).then((res) => {
             if (res.ok) {
                 return res.json()
             }
@@ -44,7 +44,7 @@ class WordFormUpdate extends React.Component{
             synonym: this.state.synonym,
             antonym: this.state.antonym
         }
-        fetch('http://127.0.0.1:5000/word/'+this.props.match.params.id, {
+        fetch('https://lexis-gre-app-server.herokuapp.com/word/'+this.props.match.params.id, {
             method: 'PATCH',
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify(wordObj)

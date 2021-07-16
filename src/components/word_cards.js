@@ -10,7 +10,7 @@ class WordCard extends React.Component {
     }
 
     componentDidMount() {
-        fetch('http://127.0.0.1:5000/words/').then((res) => {
+        fetch('https://lexis-gre-app-server.herokuapp.com/words/').then((res) => {
             if (res.ok) {
                 return res.json()
             }
@@ -36,7 +36,7 @@ class WordCard extends React.Component {
 
 
     delete = (id) =>{
-        fetch('http://127.0.0.1:5000/word/' + id, {
+        fetch('https://lexis-gre-app-server.herokuapp.com/word/' + id, {
             method: 'DELETE'
         }).then((res) => {
             if (res.status === 204){
