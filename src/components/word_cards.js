@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import Loading from '../shared/loading';
 import Popup from 'reactjs-popup';
 import M from 'materialize-css';
+import FloatButton from '../shared/floating_button';
 
 class WordCard extends React.Component {
     state = {
@@ -104,6 +105,7 @@ class WordCard extends React.Component {
 
 
     render() {
+        
         const state = this.state;
         const modal = (<div
             ref={Modal => {
@@ -141,7 +143,9 @@ class WordCard extends React.Component {
                                     <Link to={"/update_word_form/" + word.id} class="secondary-content"><i class="material-icons">edit</i></Link></div></li>
                                     {modal}
                             </div>
+                            <FloatButton/>
                         </div>
+                        
                     )
 
                 })}
