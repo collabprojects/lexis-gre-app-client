@@ -91,10 +91,8 @@ class FlashCard extends React.Component {
                 </div>
             </div>
         </div>
-
-
-            <div className="center-align" style={{ paddingTop: "10px" }}>
-                <button onClick={this.next} className="waves-effect waves-light btn pink accent-3">Next</button></div></div> : <div className="center"><Loading /></div>
+        <div className="center-align" style={{ paddingTop: "10px" }}>
+            <button onClick={this.next} className="waves-effect waves-light btn pink accent-3">Next</button></div></div> : <div className="center"><Loading /></div>
         return (
             <div className="flash-card" style={{ width: "80%" }}>
                 {card}
