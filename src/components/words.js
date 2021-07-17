@@ -45,6 +45,7 @@ class Words extends React.Component{
         return (
             <div className = "words">
                 {wordList}
+               
             </div>
         )
     }
