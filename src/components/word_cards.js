@@ -1,13 +1,14 @@
 import React from 'react';
-import { Route,BrowserRouter, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Loading from '../shared/loading';
-import {withRouter} from 'react-router-dom';
-import WordFormUpdate from './word_form_update';
+import Popup from 'reactjs-popup';
+import M from 'materialize-css';
 
 class WordCard extends React.Component {
     state = {
         words: null,
-        itemsToUse: []
+        itemsToUse: [],
+        show: false
     }
 
     componentDidMount() {
@@ -21,6 +22,27 @@ class WordCard extends React.Component {
                 itemsToUse: data
             })
         })
+        const options = {
+            onOpenStart: () => {
+                console.log("Open Start");
+            },
+            onOpenEnd: () => {
+                console.log("Open End");
+            },
+            onCloseStart: () => {
+                console.log("Close Start");
+            },
+            onCloseEnd: () => {
+                console.log("Close End");
+            },
+            inDuration: 250,
+            outDuration: 250,
+            opacity: 0.5,
+            dismissible: false,
+            startingTop: "4%",
+            endingTop: "10%"
+        };
+        M.Modal.init(this.Modal)
     }
 
     searchHandler = (e) => {
@@ -36,52 +58,99 @@ class WordCard extends React.Component {
 
 
 
-    delete = (id) =>{
+    delete = (id) => {
         fetch('https://lexis-gre-app-server.herokuapp.com/word/' + id, {
             method: 'DELETE'
         }).then((res) => {
-            if (res.status === 204){
-                window.M.toast({html: 'Word successfully deleted!'}, 2000);
+            if (res.status === 204) {
+                window.M.toast({ html: 'Word successfully deleted!' }, 2000);
             }
-        }).then(()=>{
-            const words = this.state.words.filter((word)=>{
+        }).then(() => {
+            const words = this.state.words.filter((word) => {
                 return word.id !== id
             });
             this.setState({
                 words: words,
                 itemsToUse: words
             })
-            window.M.toast({html: 'Word successfully deleted!'}, 2000);
+            window.M.toast({ html: 'Word successfully deleted!' }, 2000);
         })
+    }
+
+    open = () => {
+        const options = {
+            onOpenStart: () => {
+                console.log("Open Start");
+            },
+            onOpenEnd: () => {
+                console.log("Open End");
+            },
+            onCloseStart: () => {
+                console.log("Close Start");
+            },
+            onCloseEnd: () => {
+                console.log("Close End");
+            },
+            inDuration: 250,
+            outDuration: 250,
+            opacity: 0.5,
+            dismissible: false,
+            startingTop: "4%",
+            endingTop: "10%"
+        };
+        M.Modal.init(this.Modal, options)
     }
 
 
 
     render() {
-        const state = this.state
+        const state = this.state;
+        const modal = (<div
+            ref={Modal => {
+                this.Modal = Modal;
+            }}
+            id="modal1"
+            className="modal"
+        >
+            <div class="modal-content">
+                <h4>Modal Header</h4>
+                <p>A bunch of text</p>
+            </div>
+            <div class="modal-footer">
+                <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+            </div>
+        </div>) 
         const words = state.words ? <div className="word_cards">
-            <BrowserRouter><Route path="/update_word_form/:id"  component={WordFormUpdate}/></BrowserRouter>
             <ul class="collection with-header">
                 <li class="collection-header center grey lighten-2" style={{ marginTop: "0px" }}><h5><b><u>Word List</u></b></h5></li>
                 <div className="row">
-                <div className="col s3"></div>
-                <div className="search-input">
-                <div className="input-field col s3" style={{width: "50%"}}>
-                    <i class="material-icons prefix">search</i>
-                    <input type="text" className="search" onChange={this.searchHandler} />
-                </div>
-                </div>
+                    <div className="col s3"></div>
+                    <div className="search-input">
+                        <div className="input-field col s3" style={{ width: "50%" }}>
+                            <i class="material-icons prefix">search</i>
+                            <input type="text" className="search" onChange={this.searchHandler} />
+                        </div>
+                    </div>
                 </div>
                 {state.itemsToUse.length === 0 ? <p className="center">No words found</p> : state.itemsToUse.map((word) => {
                     return (
-                        <li key={word.id} class="collection-item yellow lighten-3" ><div style={{ color: "#0d47a1" }}>{word.word}<BrowserRouter><i style={{paddingLeft: "5px", color: "#f50057", cursor: "pointer"}} class="material-icons secondary-content" onClick={() => this.delete(word.id)}>delete</i><Link to={"/update_word_form/" + word.id} class="secondary-content"><i class="material-icons">edit</i></Link></BrowserRouter></div></li>
+                        <div>
+                            <div>
+                                <li key={word.id} class="collection-item yellow lighten-3" ><div style={{ color: "#0d47a1" }}>{word.word}
+                                    <i style={{ paddingLeft: "5px", color: "#f50057", cursor: "pointer" }} data-target="modal1" class="material-icons secondary-content modal-trigger" onClick={() => { this.open() }}>delete</i>
+                                    <Link to={"/update_word_form/" + word.id} class="secondary-content"><i class="material-icons">edit</i></Link></div></li>
+                                    {modal}
+                            </div>
+                        </div>
                     )
 
                 })}
             </ul>
         </div> : <Loading />
-        return (<div>{words}</div>)
+        return (<div>
+            {words}
+        </div>)
     }
 }
 
-export default withRouter(WordCard)
+export default WordCard

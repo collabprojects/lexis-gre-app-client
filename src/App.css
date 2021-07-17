@@ -3,13 +3,21 @@ body {
 }
 
 i {
-    color: #f50057
+    color: #f50057;
+    transition: transform .2s;
 }
 
-table {}
+i:hover{
+    transform: scale(1.5)
+  }
+
 
 a {
     cursor: pointer;
+}
+
+.sidenav-trigger{
+    display: none;
 }
 
 .word-form {
@@ -56,7 +64,7 @@ a {
     position: absolute;
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 1024px) {
     .word-form {
         max-width: 80%;
     }
@@ -76,6 +84,12 @@ a {
     }
     .Loading {
         margin-top: 50%;
+    }
+    .sidenav-trigger{
+        display: block;
+    }
+    .list-item{
+        display: none;
     }
 }
 

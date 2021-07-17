@@ -5,12 +5,8 @@ import Loading from '../shared/loading';
 
 class FlashCard extends React.Component {
 
-   
 
-    constructor(props) {
-        super(props);
 
-    }
     state = {
         word: '',
         primary_meaning: '',
@@ -18,7 +14,7 @@ class FlashCard extends React.Component {
         placeholder: 'Tap to reveal',
         placeholder_sentence: 'Tap to reveal',
         rand_words: [],
-        user_number: this.props.user_number,
+        user_number: this.props.match.params.number,
         length: null
     }
 
@@ -34,7 +30,7 @@ class FlashCard extends React.Component {
             })
         }).then(() => {
             for (var i = 0; i < this.state.user_number; i++) {
-                fetch('https://lexis-gre-app-server.herokuapp.com/word/' + Math.floor((Math.random() * this.state.length) + 1)).then((res) => {
+                fetch('https://lexis-gre-app-server.herokuapp.com/word/' + Math.floor((Math.random() * this.state.length))).then((res) => {
                     if (res.ok) {
                         return res.json()
                     }
@@ -45,20 +41,20 @@ class FlashCard extends React.Component {
                     //console.log(this.state.rand_words)
                 })
             }
+            setTimeout(() => {
+                const index = Math.floor((Math.random() * this.state.rand_words.length));
+                this.setState({
+                    word: this.state.rand_words[index].word,
+                    primary_meaning: this.state.rand_words[index].primary_meaning,
+                    sentence: this.state.rand_words[index].sentence,
+                })
+            }, 1000)
         })
-        setTimeout(() => {
-            const index = Math.floor((Math.random() * this.state.rand_words.length) + 1);
-            this.setState({
-                word: this.state.rand_words[index].word,
-                primary_meaning: this.state.rand_words[index].primary_meaning,
-                sentence: this.state.rand_words[index].sentence,
-            })
-        }, 10000)
 
     }
 
     next = () => {
-        const index = Math.floor((Math.random() * this.state.rand_words.length) + 1);
+        const index = Math.floor((Math.random() * this.state.rand_words.length));
         this.setState({
             word: this.state.rand_words[index].word,
             primary_meaning: this.state.rand_words[index].primary_meaning,
@@ -98,7 +94,7 @@ class FlashCard extends React.Component {
 
 
             <div className="center-align" style={{ paddingTop: "10px" }}>
-                <button onClick={this.generate} className="waves-effect waves-light btn pink accent-3">Next</button></div></div> : <div className="center"><Loading /></div>
+                <button onClick={this.next} className="waves-effect waves-light btn pink accent-3">Next</button></div></div> : <div className="center"><Loading /></div>
         return (
             <div className="flash-card" style={{ width: "80%" }}>
                 {card}
