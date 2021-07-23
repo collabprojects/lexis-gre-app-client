@@ -97,6 +97,7 @@ class WordFormUpdate extends React.Component {
         }).then(() => {
             this.props.history.push("/");
             M.toast({ html: 'Word successfully deleted!' }, 2000);
+            //<i disabled= {true} style={{ paddingLeft: "5px", color: "#f50057", cursor: "pointer" }} data-target="modal1" class="material-icons secondary-content modal-trigger">delete</i>
         })
     }
 
@@ -114,7 +115,6 @@ class WordFormUpdate extends React.Component {
                         <input type='text' id='antonym' value={this.state.antonym} placeholder='Enter Antonyms' onChange={this.handleChange} />
                     </form>
                     <button onClick={this.handleSubmit} disabled={this.state.word !== '' ? false : true} className="waves-effect waves-light btn pink accent-3" style={{ marginTop: "15px" }}>Update Word</button>
-                    <i style={{ paddingLeft: "5px", color: "#f50057", cursor: "pointer" }} data-target="modal1" class="material-icons secondary-content modal-trigger">delete</i>
                     <div
                         ref={Modal => {
                             this.Modal = Modal;

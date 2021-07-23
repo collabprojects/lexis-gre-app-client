@@ -104,6 +104,9 @@ class FlashCard extends React.Component {
         return (
             <div className="flash-card" style={{ width: "80%" }}>
                 {card}
+                <br></br>
+                {state.covered.size ? <div className="center-align" style={{ paddingTop: "10px" }}>
+                <button onClick={() => this.props.history.push('/')} disabled = {this.state.covered.size === this.state.rand_words.length ? false : true} className="waves-effect waves-light btn pink accent-3">Finished! Back to home? </button></div> : <p></p>}
             </div>
         )
     }
