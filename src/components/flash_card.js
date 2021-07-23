@@ -15,7 +15,8 @@ class FlashCard extends React.Component {
         placeholder_sentence: 'Tap to reveal',
         rand_words: [],
         user_number: this.props.match.params.number,
-        length: null
+        length: null,
+        covered: new Set(),
     }
 
     componentDidMount() {
@@ -43,7 +44,10 @@ class FlashCard extends React.Component {
             }
             setTimeout(() => {
                 const index = Math.floor((Math.random() * this.state.rand_words.length));
+                const covered = this.state.covered;
+                covered.add(index)
                 this.setState({
+                    covered: covered,
                     word: this.state.rand_words[index].word,
                     primary_meaning: this.state.rand_words[index].primary_meaning,
                     sentence: this.state.rand_words[index].sentence,
@@ -55,8 +59,11 @@ class FlashCard extends React.Component {
 
     next = () => {
         const index = Math.floor((Math.random() * this.state.rand_words.length));
+        const covered = this.state.covered;
+        covered.add(index)
         this.setState({
             word: this.state.rand_words[index].word,
+            covered: covered,
             primary_meaning: this.state.rand_words[index].primary_meaning,
             sentence: this.state.rand_words[index].sentence,
             placeholder: 'Tap to reveal',
@@ -76,6 +83,7 @@ class FlashCard extends React.Component {
         const state = this.state;
         const card = state.word !== '' ? <div><div style={{ paddingTop: "10px" }}>
             <div>
+                <p>{state.covered.size}/{state.rand_words.length} Words Covered</p>
                 <div class="card yellow lighten-3 z-depth-2">
                     <div class="card-content white-text">
                         <span class="card-title" style={{ color: 'black', fontWeight: 'bold', textDecoration: "underline" }}>{state.word}</span>

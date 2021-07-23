@@ -1,6 +1,6 @@
 import React from 'react';
 import { withRouter, connect, mapDispatchToProps, mapStateToProps } from 'react-router-dom';
-
+import M from 'materialize-css';
 
 class WordForm extends React.Component {
     state = {
@@ -54,7 +54,7 @@ class WordForm extends React.Component {
                     antonym: '',
                     error: '',
                 })
-                window.M.toast({ html: 'Word successfully added!' }, 2000);
+                M.toast({ html: 'Word successfully added!' }, 2000);
             }
         })
     }

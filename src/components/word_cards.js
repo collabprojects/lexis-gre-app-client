@@ -2,8 +2,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Loading from '../shared/loading';
 import Popup from 'reactjs-popup';
-import M from 'materialize-css';
+//import M from 'materialize-css';
 import FloatButton from '../shared/floating_button';
+import M from 'materialize-css';
 
 class WordCard extends React.Component {
     state = {
@@ -23,27 +24,6 @@ class WordCard extends React.Component {
                 itemsToUse: data
             })
         })
-        const options = {
-            onOpenStart: () => {
-                console.log("Open Start");
-            },
-            onOpenEnd: () => {
-                console.log("Open End");
-            },
-            onCloseStart: () => {
-                console.log("Close Start");
-            },
-            onCloseEnd: () => {
-                console.log("Close End");
-            },
-            inDuration: 250,
-            outDuration: 250,
-            opacity: 0.5,
-            dismissible: false,
-            startingTop: "4%",
-            endingTop: "10%"
-        };
-        M.Modal.init(this.Modal)
     }
 
     searchHandler = (e) => {
@@ -64,7 +44,7 @@ class WordCard extends React.Component {
             method: 'DELETE'
         }).then((res) => {
             if (res.status === 204) {
-                window.M.toast({ html: 'Word successfully deleted!' }, 2000);
+                M.toast({ html: 'Word successfully deleted!' }, 2000);
             }
         }).then(() => {
             const words = this.state.words.filter((word) => {
@@ -74,7 +54,7 @@ class WordCard extends React.Component {
                 words: words,
                 itemsToUse: words
             })
-            window.M.toast({ html: 'Word successfully deleted!' }, 2000);
+            M.toast({ html: 'Word successfully deleted!' }, 2000);
         })
     }
 
@@ -99,13 +79,13 @@ class WordCard extends React.Component {
             startingTop: "4%",
             endingTop: "10%"
         };
-        M.Modal.init(this.Modal, options)
+        // M.Modal.init(this.Modal, options)
     }
 
 
 
     render() {
-        
+
         const state = this.state;
         const modal = (<div
             ref={Modal => {
@@ -121,7 +101,7 @@ class WordCard extends React.Component {
             <div class="modal-footer">
                 <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
             </div>
-        </div>) 
+        </div>)
         const words = state.words ? <div className="word_cards">
             <ul class="collection with-header">
                 <li class="collection-header center grey lighten-2" style={{ marginTop: "0px" }}><h5><b><u>Word List</u></b></h5></li>
@@ -139,13 +119,10 @@ class WordCard extends React.Component {
                         <div>
                             <div>
                                 <li key={word.id} class="collection-item yellow lighten-3" ><div style={{ color: "#0d47a1" }}>{word.word}
-                                    <i style={{ paddingLeft: "5px", color: "#f50057", cursor: "pointer" }} data-target="modal1" class="material-icons secondary-content modal-trigger" onClick={() => { this.open() }}>delete</i>
                                     <Link to={"/update_word_form/" + word.id} class="secondary-content"><i class="material-icons">edit</i></Link></div></li>
-                                    {modal}
                             </div>
-                            <FloatButton/>
                         </div>
-                        
+
                     )
 
                 })}
@@ -153,6 +130,10 @@ class WordCard extends React.Component {
         </div> : <Loading />
         return (<div>
             {words}
+            <br/>
+            <br/>
+            <br/>
+            <FloatButton style={{marginTop: "30px"}}/>
         </div>)
     }
 }
