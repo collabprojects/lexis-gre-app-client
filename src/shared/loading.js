@@ -4,7 +4,7 @@ const Loading = () => {
   return (
     <div class="Loading center"style={{paddingTop:"22%"}}>
       <div class="preloader-wrapper big active">
-        <div class="spinner-layer spinner-green-only">
+        <div class="spinner-layer spinner-blue-only">
           <div class="circle-clipper left">
             <div class="circle"></div>
           </div><div class="gap-patch">

@@ -103,6 +103,7 @@ class WordCard extends React.Component {
             </div>
         </div>)
         const words = state.words ? <div className="word_cards">
+
             <ul class="collection with-header">
                 <li class="collection-header center grey lighten-2" style={{ marginTop: "0px" }}><h5><b><u>Word List</u></b></h5></li>
                 <div className="row">
@@ -111,6 +112,10 @@ class WordCard extends React.Component {
                         <div className="input-field col s3" style={{ width: "50%" }}>
                             <i class="material-icons prefix">search</i>
                             <input type="text" className="search" onChange={this.searchHandler} />
+                            <div className="center-align">
+                            <p style={{color:"#424242", opacity:"0.4"}}>Total Word Count</p>
+                            <p style={{color: "#f50057"}}>{this.state.words.length}</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -118,7 +123,7 @@ class WordCard extends React.Component {
                     return (
                         <div>
                             <div>
-                                <li key={word.id} class="collection-item yellow lighten-3" ><div style={{ color: "#0d47a1" }}>{word.word}
+                                <li key={word.id} class="collection-item yellow lighten-3" ><div style={{ color: "#0d47a1" }}><Link to={"/view_word/" + word.id} style={{ color: "#0d47a1", fontWeight: "bold" }}>{word.word}</Link>
                                     <Link to={"/update_word_form/" + word.id} class="secondary-content"><i class="material-icons">edit</i></Link></div></li>
                             </div>
                         </div>
@@ -130,10 +135,10 @@ class WordCard extends React.Component {
         </div> : <Loading />
         return (<div>
             {words}
-            <br/>
-            <br/>
-            <br/>
-            <FloatButton style={{marginTop: "30px"}}/>
+            <br />
+            <br />
+            <br />
+            <FloatButton style={{ marginTop: "30px" }} />
         </div>)
     }
 }

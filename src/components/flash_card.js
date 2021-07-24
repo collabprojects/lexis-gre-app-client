@@ -13,6 +13,7 @@ class FlashCard extends React.Component {
         sentence: '',
         placeholder: 'Tap to reveal',
         placeholder_sentence: 'Tap to reveal',
+        placeholder_secondary: 'Tap to reveal',
         rand_words: [],
         user_number: this.props.match.params.number,
         length: null,
@@ -50,6 +51,7 @@ class FlashCard extends React.Component {
                     covered: covered,
                     word: this.state.rand_words[index].word,
                     primary_meaning: this.state.rand_words[index].primary_meaning,
+                    secondary_meaning: this.state.rand_words[index].secondary_meaning,
                     sentence: this.state.rand_words[index].sentence,
                 })
             }, 1000)
@@ -65,9 +67,11 @@ class FlashCard extends React.Component {
             word: this.state.rand_words[index].word,
             covered: covered,
             primary_meaning: this.state.rand_words[index].primary_meaning,
+            secondary_meaning: this.state.rand_words[index].secondary_meaning,
             sentence: this.state.rand_words[index].sentence,
             placeholder: 'Tap to reveal',
-            placeholder_sentence: 'Tap to reveal'
+            placeholder_sentence: 'Tap to reveal',
+            placeholder_secondary: 'Tap to reveal'
         })
     }
 
@@ -75,6 +79,7 @@ class FlashCard extends React.Component {
         this.setState({
             placeholder: this.state.primary_meaning,
             placeholder_sentence: this.state.sentence,
+            placeholder_secondary: this.state.secondary_meaning
         })
     }
 
@@ -89,6 +94,9 @@ class FlashCard extends React.Component {
                         <span class="card-title" style={{ color: 'black', fontWeight: 'bold', textDecoration: "underline" }}>{state.word}</span>
                         <p style={{ fontWeight: 'bold', color: '#f50057' }}>Primary Meaning: </p>
                         <p style={{ color: '#0d47a1' }}>{state.placeholder}</p>
+                        <br />
+                        <p style={{ fontWeight: 'bold', color: '#f50057' }}>Secondary Meaning: </p>
+                        <p style={{ color: '#0d47a1' }}>{state.placeholder_secondary}</p>
                         <br />
                         <p style={{ fontWeight: 'bold', color: '#f50057' }}>Sentence: </p>
                         <p style={{ color: '#0d47a1' }}>{state.placeholder_sentence}</p>

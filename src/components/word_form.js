@@ -1,5 +1,5 @@
 import React from 'react';
-import { withRouter, connect, mapDispatchToProps, mapStateToProps } from 'react-router-dom';
+import { withRouter, connect, mapDispatchToProps, mapStateToProps, Link } from 'react-router-dom';
 import M from 'materialize-css';
 
 class WordForm extends React.Component {
@@ -21,8 +21,9 @@ class WordForm extends React.Component {
 
     handleSubmit = () => {
         //const state = this.state
+        const word = this.state.word
         const wordObj = {
-            word: this.state.word,
+            word: word.trim(),
             primary_meaning: this.state.primary_meaning,
             secondary_meaning: this.state.secondary_meaning,
             sentence: this.state.sentence,
@@ -67,12 +68,15 @@ class WordForm extends React.Component {
                     <form className="center">
                         <input type='text' id='word' value={this.state.word} placeholder='Enter word' onChange={this.handleChange} />
                         <textarea  class="materialize-textarea" type='text' id='primary_meaning' value={this.state.primary_meaning} placeholder='Enter Primary Meaning' onChange={this.handleChange} />
-                        <input type='text' id='secondary_meaning' value={this.state.secondary_meaning} placeholder='Enter Secondary Meaning' onChange={this.handleChange} />
+                        <textarea class="materialize-textarea" type='text' id='secondary_meaning' value={this.state.secondary_meaning} placeholder='Enter Secondary Meaning' onChange={this.handleChange} />
                         <textarea class="materialize-textarea" type='text' id='sentence' value={this.state.sentence} placeholder='Enter Sentence' onChange={this.handleChange} />
                         <input type='text' id='synonym' value={this.state.synonym} placeholder='Enter Synonyms' onChange={this.handleChange} />
                         <input type='text' id='antonym' value={this.state.antonym} placeholder='Enter Antonyms' onChange={this.handleChange} />
                     </form>
                     <button onClick={this.handleSubmit} disabled={this.state.word !== '' ? false : true} className="waves-effect waves-light btn pink accent-3" style={{ marginTop: "15px" }}>Add Word</button>
+                    <br/>
+                    <br/>
+                    <Link to="/"><i style={{ paddingLeft: "5px", color: "#039be5", cursor: "pointer" }}  class="material-icons small">home</i></Link>
                     <p style={{ color: 'red' }}>{this.state.error}</p>
                 </div>
             </div>

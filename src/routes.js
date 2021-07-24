@@ -6,6 +6,7 @@ import WordCard from './components/word_cards';
 import FlashCard from './components/flash_card';
 import FloatButton from './shared/floating_button';
 import NotFound from './shared/not_found';
+import SingleCard from './components/single_card';
 
 
 
@@ -17,6 +18,7 @@ const Routes = () => {
         <Route path="/word_count" component={withRouter(WordCount)}/>
         <Route path="/create_word_form" component={WordForm}/>
         <Route path="/update_word_form/:id"  component={withRouter(WordFormUpdate)}/>
+        <Route path="/view_word/:id"  component={withRouter(SingleCard)}/>
         <Route path="/flash_card/generate_words=:number"  component={FlashCard}/>
         <Route to="/404" component={NotFound}/>
         <Redirect to="/404"/>
