@@ -106,16 +106,17 @@ class WordCard extends React.Component {
 
             <ul class="collection with-header">
                 <li class="collection-header center grey lighten-2" style={{ marginTop: "0px" }}><h5><b><u>Word List</u></b></h5></li>
+                <div className="center-align">
+                            <p style={{color:"#424242", opacity:"0.4"}}>Total Word Count</p>
+                            <p style={{color: "#f50057"}}>{this.state.words.length}</p>
+                            </div>
                 <div className="row">
                     <div className="col s3"></div>
                     <div className="search-input">
                         <div className="input-field col s3" style={{ width: "50%" }}>
                             <i class="material-icons prefix">search</i>
                             <input type="text" className="search" onChange={this.searchHandler} />
-                            <div className="center-align">
-                            <p style={{color:"#424242", opacity:"0.4"}}>Total Word Count</p>
-                            <p style={{color: "#f50057"}}>{this.state.words.length}</p>
-                            </div>
+                            
                         </div>
                     </div>
                 </div>
