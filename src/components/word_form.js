@@ -60,6 +60,17 @@ class WordForm extends React.Component {
         })
     }
 
+    clear_all = () => {
+        this.setState({
+            word: '',
+            primary_meaning: '',
+            secondary_meaning: '',
+            sentence: '',
+            synonym: '',
+            antonym: '',
+        })
+    }
+
     render() {
         return (
             <div className="word-form">
@@ -76,7 +87,12 @@ class WordForm extends React.Component {
                     <button onClick={this.handleSubmit} disabled={this.state.word !== '' ? false : true} className="waves-effect waves-light btn pink accent-3" style={{ marginTop: "15px" }}>Add Word</button>
                     <br/>
                     <br/>
-                    <Link to="/"><i style={{ paddingLeft: "5px", color: "#039be5", cursor: "pointer" }}  class="material-icons small">home</i></Link>
+                    <div className="center">
+                    <i class="material-icons small" onClick = {this.clear_all}>delete_sweep</i>
+                    <br/>
+                    <br/>
+                    <Link to="/"><i style={{ paddingRight: "5px", color: "#039be5", cursor: "pointer" }}  class="material-icons small">home</i></Link>
+                    </div>
                     <p style={{ color: 'red' }}>{this.state.error}</p>
                 </div>
             </div>

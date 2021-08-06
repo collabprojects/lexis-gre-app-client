@@ -15,11 +15,11 @@ const Routes = () => {
     return (
         <div>
         <Switch>
-        <Route exact path="/" component={WordCard}/>
+        <Route exact path="/" component={Wrapper}/>
         <Route path="/word_count" component={withRouter(WordCount)}/>
         <Route path="/create_word_form" component={WordForm}/>
         <Route path="/update_word_form/:id"  component={withRouter(WordFormUpdate)}/>
-        <Route path="/view_word/:id"  component={withRouter(SingleCard)}/>
+        <Route path="/view_word/:id/total_word_count=:count"  component={withRouter(SingleCard)}/>
         <Route path="/flash_card/generate_words=:number"  component={FlashCard}/>
         <Route to="/404" component={NotFound}/>
         <Redirect to="/404"/>

@@ -88,7 +88,6 @@ class WordCard extends React.Component {
 
         const state = this.state;
         const words = state.words ? <div className="word_cards">
-
             <ul class="collection with-header">
                 <li class="collection-header center grey lighten-2" style={{ marginTop: "0px" }}><h5><b><u>Word List</u></b></h5></li>
                 <div className="center-align">
@@ -109,8 +108,8 @@ class WordCard extends React.Component {
                     return (
                         <div>
                             <div>
-                                <li key={word.id} class="collection-item yellow lighten-3" ><div style={{ color: "#0d47a1" }}><Link to={"/view_word/" + word.id} style={{ color: "#0d47a1", fontWeight: "bold" }}>{word.word}</Link>
-                                    <Link to={"/update_word_form/" + word.id} class="secondary-content"><i class="material-icons">edit</i></Link></div></li>
+                                <li key={word.id} class="collection-item yellow lighten-3" ><div style={{ color: "#0d47a1" }}><Link to={"/view_word/" + word.id + "/total_word_count=" + state.words.length} style={{ color: "#0d47a1", fontWeight: "bold" }}>{word.word}</Link>
+                                    <Link to={"/update_word_form/" + word.id } class="secondary-content"><i class="material-icons">edit</i></Link></div></li>
                             </div>
                         </div>
 

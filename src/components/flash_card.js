@@ -77,9 +77,9 @@ class FlashCard extends React.Component {
 
     reveal = () => {
         this.setState({
-            placeholder: this.state.primary_meaning,
-            placeholder_sentence: this.state.sentence,
-            placeholder_secondary: this.state.secondary_meaning
+            placeholder: this.state.primary_meaning ? this.state.primary_meaning : "NA",
+            placeholder_sentence: this.state.sentence ? this.state.sentence : "NA",
+            placeholder_secondary: this.state.secondary_meaning ? this.state.secondary_meaning : "NA"
         })
     }
 
