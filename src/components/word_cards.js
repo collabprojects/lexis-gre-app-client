@@ -87,21 +87,6 @@ class WordCard extends React.Component {
     render() {
 
         const state = this.state;
-        const modal = (<div
-            ref={Modal => {
-                this.Modal = Modal;
-            }}
-            id="modal1"
-            className="modal"
-        >
-            <div class="modal-content">
-                <h4>Modal Header</h4>
-                <p>A bunch of text</p>
-            </div>
-            <div class="modal-footer">
-                <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
-            </div>
-        </div>)
         const words = state.words ? <div className="word_cards">
 
             <ul class="collection with-header">

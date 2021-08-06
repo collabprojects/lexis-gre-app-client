@@ -7,6 +7,7 @@ import FlashCard from './components/flash_card';
 import FloatButton from './shared/floating_button';
 import NotFound from './shared/not_found';
 import SingleCard from './components/single_card';
+import Wrapper from './components/view_wrapper';
 
 
 
