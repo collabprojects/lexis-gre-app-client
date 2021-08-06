@@ -88,7 +88,7 @@ class WordForm extends React.Component {
                     <br/>
                     <br/>
                     <div className="center">
-                    <i class="material-icons small" onClick = {this.clear_all}>delete_sweep</i>
+                    <i style={{cursor: "pointer"}} class="material-icons small" onClick = {this.clear_all}>delete_sweep</i>
                     <br/>
                     <br/>
                     <Link to="/"><i style={{ paddingRight: "5px", color: "#039be5", cursor: "pointer" }}  class="material-icons small">home</i></Link>
